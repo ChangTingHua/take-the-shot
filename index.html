@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070707" />
+  <title>Upload files — Take the shot</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="stage" aria-label="Upload files by shooting them through the basket">
+    <section class="upload-app" id="app">
+      <header class="app-header">
+        <div>
+          <h1>Upload files</h1>
+          <p>Drag the file to aim, then release to shoot.</p>
+        </div>
+        <div class="uploaded-pill" aria-live="polite">Uploaded <strong id="uploadedCount">0</strong></div>
+      </header>
+
+      <button class="drop-zone" id="dropZone" type="button" aria-label="Choose files or drop them here">
+        <svg class="upload-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V3m0 0L7.5 7.5M12 3l4.5 4.5M4 14v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5" /></svg>
+        <span class="drop-title">Drop files here</span>
+        <span class="drop-subtitle">or drag the file to aim</span>
+      </button>
+      <input id="fileInput" type="file" hidden />
+
+      <div class="backboard-glow" aria-hidden="true"></div>
+      <svg class="basket" id="basket" viewBox="0 0 180 205" aria-label="Basket and net" role="img">
+        <defs>
+          <linearGradient id="netFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#74808d" stop-opacity=".88"/><stop offset="1" stop-color="#9aa4ae" stop-opacity=".72"/></linearGradient>
+          <filter id="basketShadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#e8a270" flood-opacity=".18"/></filter>
+        </defs>
+        <path class="backboard" d="M42 12h96v72H42z" />
+        <path class="backboard-mark" d="M66 56h48v22H66z" />
+        <path class="support" d="M132 25h5v75" />
+        <g class="rim-group" filter="url(#basketShadow)">
+          <ellipse class="rim" cx="90" cy="100" rx="54" ry="10" />
+          <path class="rim-front" d="M36 101c18 9 90 9 108 0" />
+        </g>
+        <g class="net-lines" id="netLines">
+          <path d="M38 104 59 180M49 106 68 183M61 107 77 185M72 108 85 186M84 109 91 187M96 109 97 187M108 108 103 186M119 107 109 185M131 106 114 183M142 104 121 180" />
+          <path class="net-cross" d="M44 126c22 13 70 13 92 0M50 148c18 12 62 12 80 0M57 169c13 9 53 9 66 0" />
+        </g>
+      </svg>
+
+      <canvas id="effects" aria-hidden="true"></canvas>
+      <button class="file-item" id="fileItem" type="button" aria-label="Drag the file to aim, then release to shoot; click to choose a file">
+        <svg class="file-icon" id="fileIcon" viewBox="0 0 68 82" aria-hidden="true">
+          <path class="paper" d="M10 1h34l21 20v53a7 7 0 0 1-7 7H10a7 7 0 0 1-7-7V8a7 7 0 0 1 7-7Z" />
+          <path class="fold" d="M44 1v14a6 6 0 0 0 6 6h15" />
+          <path class="doc-line" d="M14 34h35M14 42h32M14 50h25" />
+          <rect class="type-tag" x="9" y="57" width="31" height="15" rx="4" />
+          <text class="type-label" id="typeLabel" x="24.5" y="68">PDF</text>
+        </svg>
+        <span class="file-name" id="fileName">final_final_v7.pdf</span>
+      </button>
+      <div class="drop-overlay" id="dropOverlay"><span>Release to add your file</span></div>
+      <div class="announcement" id="announcement" role="status" aria-live="polite"></div>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
