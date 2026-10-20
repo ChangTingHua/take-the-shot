@@ -1,2 +1,3 @@
 # take-the-shot
-Interactive file upload demo: aim, shoot, and pass the file through a basketball hoop.
+
+互動式檔案上傳示範：瞄準、投籃，讓檔案穿過籃球框完成上傳。
